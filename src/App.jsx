@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Intro from "./components/Intro";
-import QA from "./components/QA";
+import QuestionAnswers from "./components/QuestionAnswers";
 
 function App() {
   const [startGame, setStartGame] = React.useState(false);
@@ -9,8 +9,8 @@ function App() {
   function onStartGameTap() {
     setStartGame(true);
   }
-
-  return startGame ? <QA /> : <Intro handleClick={onStartGameTap} />;
+  return <QuestionAnswers />;
+  // return startGame ? <QA /> : <Intro handleClick={onStartGameTap} />;
 }
 
 export default App;
