@@ -18,7 +18,6 @@ div {
 }
 
 .intro {
-  border: 3px solid green;
   padding-top: 20rem;
 }
 
@@ -28,4 +27,28 @@ div {
   font-weight: 700;
   font-size: 31.25px;
   color: #293264;
+  margin-bottom: 12px;
+}
+
+.intro > p {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #293264;
+  margin-bottom: 28px;
+}
+
+.intro > button {
+  background: #4D5B9E;
+  border-radius: 15px;
+  border: 1px solid #4D5B9E;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #F5F7FB;
+  padding: 16px 60px;
 }
