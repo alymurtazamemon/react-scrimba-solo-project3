@@ -1,7 +1,9 @@
+import React from "react";
 import "./App.css";
+import Intro from "./components/Intro";
 
 function App() {
-  return <div>hello world</div>;
+  return <Intro />;
 }
 
 export default App;

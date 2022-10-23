@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+div {
+  height: 100%;
+  width: 100%;
+  /* align-items: center; */
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.intro {
+  border: 3px solid green;
+  padding-top: 20rem;
+}
+
+.intro > h1 {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 31.25px;
+  color: #293264;
+}
