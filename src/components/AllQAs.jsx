@@ -1,4 +1,5 @@
 import React from "react";
+import ActionButton from "./ActionButton";
 import QA from "./QA";
 
 function AllQAs() {
@@ -47,7 +48,12 @@ function AllQAs() {
     return <QA key={index} question={obj.question} options={obj.allOptions} />;
   });
 
-  return <section className="questionAnswers">{qaComponents}</section>;
+  return (
+    <section className="questionAnswers">
+      {qaComponents}
+      <ActionButton text="Check Answers" />
+    </section>
+  );
 }
 
 export default AllQAs;

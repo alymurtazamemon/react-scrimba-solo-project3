@@ -22,6 +22,7 @@ div {
   background-image: url("./assets/blobs1.png");
   background-repeat: no-repeat;
   background-position-x: right;
+  text-align: center;
 }
 
 .intro > h1 {
@@ -43,7 +44,7 @@ div {
   margin-bottom: 28px;
 }
 
-.intro > button {
+.action-button {
   background: #4D5B9E;
   border-radius: 15px;
   border: 1px solid #4D5B9E;
@@ -58,7 +59,7 @@ div {
 
 .questionAnswers {
   padding: 40px 240px;
-  text-align: left;
+  text-align: center;
   background-image: url("./assets/blobs1.png");
   background-repeat: no-repeat;
   background-position-x: right;
@@ -71,6 +72,7 @@ div {
   font-size: 24px;
   color: #293264;
   margin-bottom: 16px;
+  text-align: left;
 }
 
 .options{
@@ -94,5 +96,5 @@ div {
 
 hr {
     border: 0.794239px solid #DBDEF0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
