@@ -14,7 +14,7 @@ div {
   width: 100%;
   /* align-items: center; */
   /* justify-content: center; */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .intro {
@@ -54,4 +54,47 @@ div {
   line-height: 19px;
   color: #F5F7FB;
   padding: 16px 60px;
+}
+
+.questionAnswers {
+  padding: 40px 240px;
+  text-align: left;
+  background-image: url("./assets/blobs1.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+}
+
+.question {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  color: #293264;
+  margin-bottom: 16px;
+}
+
+.options{
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.option {
+  box-sizing: border-box;
+  opacity: 0.5;
+  border: 0.794239px solid #4D5B9E;
+  border-radius: 7.94239px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: #293264;
+  padding: 8px 16px;
+  margin-right: 24px;
+  text-align: left;
+}
+
+hr {
+    border: 0.794239px solid #DBDEF0;
+    margin-bottom: 16px;
 }
