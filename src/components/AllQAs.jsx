@@ -8,7 +8,6 @@ function AllQAs() {
   const [checkAnswer, setCheckAnswer] = React.useState(false);
 
   React.useEffect(() => {
-    // console.log("called");
     fetchData();
   }, []);
 
@@ -85,7 +84,7 @@ function AllQAs() {
         }
       });
     });
-    
+
     setCorrectAnswersCount(correctAnswersCount);
     setCheckAnswer(true);
   }

@@ -9,8 +9,8 @@ function App() {
   function onStartGameTap() {
     setStartGame(true);
   }
-  return <AllQAs />;
-  // return startGame ? <AllQAs /> : <Intro handleClick={onStartGameTap} />;
+  
+  return startGame ? <AllQAs /> : <Intro handleClick={onStartGameTap} />;
 }
 
 export default App;
