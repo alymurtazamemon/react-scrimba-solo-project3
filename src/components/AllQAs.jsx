@@ -4,9 +4,15 @@ import QA from "./QA";
 
 function AllQAs() {
   const [questionAnswers, setQuestionAnswers] = React.useState([]);
+  const [correctAnswersCount, setCorrectAnswersCount] = React.useState(0);
+  const [checkAnswer, setCheckAnswer] = React.useState(false);
 
   React.useEffect(() => {
     // console.log("called");
+    fetchData();
+  }, []);
+
+  function fetchData() {
     fetch(
       "https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple"
     )
@@ -19,13 +25,18 @@ function AllQAs() {
           ]);
 
           obj.question = decodeHtmlCharCodes(obj.question);
+          obj.isCorrect = false;
           obj.allOptions = shuffledArray.map((value) => {
-            return { text: decodeHtmlCharCodes(value), isSelected: false };
+            return {
+              text: decodeHtmlCharCodes(value),
+              isSelected: false,
+              isCorrectAnswer: value === obj.correct_answer,
+            };
           });
         });
         setQuestionAnswers(res.results);
       });
-  }, []);
+  }
 
   function shuffleArray(arr) {
     const shuffled = arr
@@ -44,47 +55,72 @@ function AllQAs() {
     );
   }
 
+  function onOptionTap(questionIndex, optionIndex) {
+    setQuestionAnswers((prevValue) => {
+      let value = [...prevValue];
+
+      value[questionIndex].allOptions = value[questionIndex].allOptions.map(
+        (option, index) => {
+          if (index == optionIndex) {
+            return { ...option, isSelected: true };
+          } else {
+            return { ...option, isSelected: false };
+          }
+        }
+      );
+      return value;
+    });
+  }
+
+  function onCheckAnswerTap() {
+    let correctAnswersCount = 0;
+
+    questionAnswers.map((obj, index) => {
+      const correctAnswer = obj.correct_answer;
+
+      obj.allOptions.map((option, index) => {
+        if (option.isSelected && option.text === correctAnswer) {
+          obj.isCorrect = true;
+          correctAnswersCount++;
+        }
+      });
+    });
+    
+    setCorrectAnswersCount(correctAnswersCount);
+    setCheckAnswer(true);
+  }
+
+  function onPlayAgain() {
+    fetchData();
+    setCheckAnswer(false);
+  }
+
   const qaComponents = questionAnswers.map((obj, index) => {
-    return <QA key={index} question={obj.question} options={obj.allOptions} />;
+    return (
+      <QA
+        key={index}
+        question={obj.question}
+        options={obj.allOptions}
+        handleOptionClick={(optionIndex) => onOptionTap(index, optionIndex)}
+        checkAnswer={checkAnswer}
+        isCorrect={obj.isCorrect}
+      />
+    );
   });
 
   return (
     <section className="questionAnswers">
       {qaComponents}
-      <ActionButton text="Check Answers" />
+      {checkAnswer ? (
+        <div className="score">
+          <h3>You scored {correctAnswersCount}/5 answers</h3>
+          <ActionButton text="Play again" handleClick={onPlayAgain} />
+        </div>
+      ) : (
+        <ActionButton text="Check Answers" handleClick={onCheckAnswerTap} />
+      )}
     </section>
   );
 }
 
 export default AllQAs;
-
-// category: "General Knowledge"
-// correct_answer: "Hats"
-// difficulty: "medium"
-// incorrect_answers: Array(3)
-// 0: "Shoes"
-// 1: "Belts"
-// 2: "Shirts"
-// length: 3
-// question: "What does a milliner make and sell?"
-// type: "multiple"
-
-// {
-//   shuffleArray([obj.correct_answer, ...obj.incorrect_answers]).map(
-//     (value, index) => (
-//       <button
-//         key={index}
-//         className="option"
-//         onClick={onOptionTap}
-//         // style={{ backgroundColor: "#F8BCBC" }}
-//         // style={{
-//         //   backgroundColor: "#94D7A2",
-//         //   fontWeight: 500,
-//         //   opacity: 1,
-//         // }}
-//       >
-//         {decodeHtmlCharCodes(value)}
-//       </button>
-//     )
-//   );
-// }
